@@ -1,23 +1,32 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './src/main.ts',
+  mode: 'production',
+  entry: './src/Game.js',
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
       }
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: ['.js']
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname) + '/dist',
+    publicPath: '/',
+    filename: 'bundle.js'
   },
-  plugins: [new HtmlWebpackPlugin()]
+  devServer: {
+    contentBase: './dist'
+  },
+  plugins: [new HtmlWebpackPlugin()],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
+  }
 };

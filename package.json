@@ -4,8 +4,10 @@
   "description": "A 2D game for GGJ-2019Ansbach",
   "main": "src/main.js",
   "scripts": {
+    "analyze": "webpack --profile --json > webpack-stats.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server"
   },
   "keywords": [
     "2d",
@@ -14,15 +16,22 @@
   "author": "nay",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.12.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "ts-loader": "^5.3.3",
-    "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.2.4",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "phaser": "^3.15.1",
-    "tslint": "^5.12.1"
+    "phaser": "^3.15.1"
   }
 }
